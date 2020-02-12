@@ -1,8 +1,34 @@
 {% extends "base.html" %} {% block main %}
 <h2>Contact Form</h2>
 <form method="POST" action="">
-  {{ form.csrf_token }} {{ form.name.label }} {{ form.name(size=20) }}
-  <button type="submit">Send</button>
+  <div class="myform">
+    {{form.csrf_token}}
+    <div class="section">
+      <h4>Name</h4>
+      <p>Please enter your full name</p>
+      {{form.name.label(required = 'required')}} {{form.name(size=20,
+      class='textarea')}}
+    </div>
+    <div class="section">
+      <h4>E-mail</h4>
+      <p>Please enter your e-mail address</p>
+      {{form.email.label(required = 'required')}} {{form.email(size=20,
+      class='textarea')}}
+    </div>
+    <div class="section">
+      <h4>Subject</h4>
+      <p>Please enter the subject for your message</p>
+      {{form.subject.label(required = 'required')}} {{form.subject(size=20,
+      class='textarea')}}
+    </div>
+    <div class="section">
+      <h4>Message</h4>
+      <p>Please enter the message you would like to send</p>
+      {{form.message.label(required = 'required')}} {{form.message(size=75,
+      class='mtextarea')}}
+    </div>
+    <div class="section"><button type="submit">Send</button></div>
+  </div>
 </form>
 
 {% endblock %}
