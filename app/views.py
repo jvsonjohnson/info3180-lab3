@@ -19,7 +19,7 @@ from flask_mail import Message
 
 @app.route("/")
 def home():
-    """Render website's home page."""
+
     return render_template("home.html")
 
 
@@ -40,7 +40,9 @@ def contact():
             email = form.email.data
             subject = form.subject.data
             message = form.message.data
-
+            msg = Message(subject, sender=(name, email), recipients=["to@example.com"])
+            msg.body = message
+            mail.send(msg)
             flash("You have successfully filled out the form", "success")
             return redirect(url_for("home"))
 
